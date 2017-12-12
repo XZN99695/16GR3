@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping>
+	<class name="com.qhit.le.gr3b.xzn.hbt01.bean.User" table="t_user">
+	 	<!-- 必须要有ID -->
+	 	<id name="id" column="id" type="integer">
+	 		<!-- 主键自增 -->
+	 		<generator class="native"></generator>
+	 	</id>
+	 	<property name="name" column="name" type="string"></property>
+	 	<property name="pwd" column="pwd" type="string"></property>
+	 	<property name="sex" column="sex" type="string"></property>
+	 	<property name="age" column="age" type="integer"></property>
+	 	<property name="edu" column="edu" type="string"></property>
+	 	
+	 	
+	</class>
+
+
+</hibernate-mapping>
+
+
+
+
