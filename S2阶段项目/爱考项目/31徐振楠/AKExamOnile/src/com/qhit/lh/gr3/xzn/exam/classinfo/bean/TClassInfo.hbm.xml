@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-9 17:47:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.qhit.lh.gr3.cyh.exam.classinfo.bean.TClassInfo" table="t_classInfo" schema="dbo" catalog="db_exam">
+        <id name="ccode" type="string">
+            <column name="cCode" length="20" />
+            <generator class="assigned" />
+        </id>
+        <property name="cname" type="string">
+            <column name="cName" length="20" not-null="true" />
+        </property>
+        <property name="major" type="string">
+            <column name="major" length="10" not-null="true" />
+        </property>
+        <property name="insId" type="int">
+            <column name="insId" not-null="true" />
+        </property>
+        <property name="iecId" type="int">
+            <column name="iecId" not-null="true" />
+        </property>
+        <property name="cdate" type="date">
+            <column name="cDate" length="10" not-null="true" />
+        </property>
+        <property name="g1num" type="java.lang.Integer">
+            <column name="g1Num" />
+        </property>
+        <property name="g2num" type="java.lang.Integer">
+            <column name="g2Num" />
+        </property>
+        <property name="g3num" type="java.lang.Integer">
+            <column name="g3Num" />
+        </property>
+		<!--班级状态 -->
+        <property name="ccodeId" type="java.lang.Integer">
+            <column name="cCodeId" />
+        </property>
+        <property name="cremark" type="string">
+            <column name="cRemark" length="50" />
+        </property>
+	<!-- n-1 -->
+	<set name="pacls" lazy="false" cascade="all">
+	<key column="ccode"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.paper.bean.PaperClass"/>
+	</set>
+	<!-- 班级对学生 -->
+	<set name="stus" lazy="false">
+	<key column="ccode"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.common.bean.TStudent"/>
+	</set>
+    </class>
+</hibernate-mapping>

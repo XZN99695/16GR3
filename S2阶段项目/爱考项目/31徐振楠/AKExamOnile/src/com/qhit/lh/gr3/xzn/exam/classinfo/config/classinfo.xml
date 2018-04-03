@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="classinfo" namespace="/classinfo" extends="default">
+		<action name="class_*"
+			class="com.qhit.lh.gr3.cyh.exam.classinfo.action.classinfoAction" method="{1}">
+			<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="gostudyStart">/jsp/papers/studyStart.jsp</result>
+			<allowed-methods>getClassbyInfo</allowed-methods>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-9 17:33:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.qhit.lh.gr3.cyh.exam.paper.bean.PaperClass" table="paper_class" schema="dbo" catalog="db_exam">
+        <id name="pcId" type="int">
+            <column name="pcId" />
+            <generator class="native" />
+        </id>
+        <property name="pid" type="int" insert="false" update="false">
+            <column name="pid" not-null="true" />
+        </property>
+        <property name="ccode" type="string" insert="false" update="false">
+            <column name="ccode" length="20" not-null="true" />
+        </property>
+        <property name="examDate" type="string">
+            <column name="examDate" length="10" not-null="true" />
+        </property>
+        <property name="endDate" type="string">
+            <column name="endDate" length="10" not-null="true" />
+        </property>
+	<!-- n-1 -->
+        <many-to-one name="pper" class="com.qhit.lh.gr3.cyh.exam.paper.bean.TPaper" column="pid" lazy="false"/>
+        <many-to-one name="classInfo" class="com.qhit.lh.gr3.cyh.exam.classinfo.bean.TClassInfo" column="ccode" lazy="false"/>
+    </class>
+</hibernate-mapping>

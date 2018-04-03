@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- <constant name="struts.devMode" value="true"></constant> -->
+	<package name="default" namespace="/"
+		extends="struts-default, json-default" strict-method-invocation="true">
+		<!--定义所有模块登录校验的拦截器配置  拦截器要先配置再引用-->
+		<interceptors>
+			<!--定义自己的拦截器 -->
+			<interceptor name="LoginInterceptor"
+				class="com.qhit.lh.gr3.cyh.exam.common.config.LoginInterceptor"></interceptor>
+		</interceptors>
+	</package>
+	<!-- User模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/common/config/user.xml" />
+	<!-- Question模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/question/config/question.xml" />
+	<!-- Paper模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/paper/config/paper.xml" />
+	<!-- classinfo模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/classinfo/config/classinfo.xml" />
+	<!-- startExam模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/startExam/config/exam.xml" />
+	<!-- examScores模块 -->
+	<include file="com/qhit/lh/gr3/cyh/exam/examScores/config/scores.xml" />
+</struts>

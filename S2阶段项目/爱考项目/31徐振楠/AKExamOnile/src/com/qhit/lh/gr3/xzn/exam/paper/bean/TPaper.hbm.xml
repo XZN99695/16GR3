@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-9 17:33:24 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.qhit.lh.gr3.cyh.exam.paper.bean.TPaper" table="t_paper" schema="dbo" catalog="db_exam">
+        <id name="pid" type="int">
+            <column name="pId" />
+            <generator class="native" />
+        </id>
+        <property name="pname" type="string">
+            <column name="pName" length="20" not-null="true" />
+        </property>
+        <property name="ptime" type="int">
+            <column name="pTime" not-null="true" />
+        </property>
+        <property name="ptotalScore" type="int">
+            <column name="pTotalScore" not-null="true" />
+        </property>
+        <property name="csId" type="int" insert="false" update="false">
+            <column name="csId" not-null="true" />
+        </property>
+        <property name="qtotal" type="int">
+            <column name="qTotal" not-null="true" />
+        </property>
+        <property name="qscore" type="float">
+            <column name="qScore" not-null="true" />
+        </property>
+        <property name="ptype" type="string">
+            <column name="pType" length="10" not-null="true" />
+        </property>
+        <property name="pstate" type="string">
+            <column name="pState" length="10" not-null="true" />
+        </property>
+	<!-- n-1 -->
+	<many-to-one name="course" class="com.qhit.lh.gr3.cyh.exam.question.bean.TCourse" cascade="save-update" lazy="false" column="csId"/>
+	<!-- 1-n -->
+	<set name="pacls" lazy="false">
+	<key column="pid"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.paper.bean.PaperClass"/>
+	</set>
+	<set name="userScores" cascade="none" lazy="false">
+	<key column="pid"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.examScores.bean.TUserScores"/>
+	</set>
+	<!-- 试卷-试题 n-n -->
+	<set name="machineTests" table="paper_writtenTest" lazy="false" >
+	<key column="pid"/>
+	<many-to-many class="com.qhit.lh.gr3.cyh.exam.question.bean.TMachineTest" column="qid" />
+	</set>
+	<!-- 试卷-试题 n-n -->
+	<set name="writtenTests" table="paper_writtenTest" lazy="false" >
+	<key column="pid"/>
+	<many-to-many class="com.qhit.lh.gr3.cyh.exam.question.bean.TWrittenTest" column="qid" />
+	</set>
+    </class>
+</hibernate-mapping>

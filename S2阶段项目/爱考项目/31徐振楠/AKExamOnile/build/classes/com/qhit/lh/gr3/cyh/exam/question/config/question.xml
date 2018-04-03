@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="question" namespace="/question" extends="default">
+		<action name="question_*"
+			class="com.qhit.lh.gr3.cyh.exam.question.action.QuestionAction"
+			method="{1}">
+			<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="goquestion">/jsp/questions/questionlist.jsp</result>
+			<result name="wquestions">/jsp/questions/writtenquestions.jsp</result>
+			<result name="mquestions">/jsp/questions/machinequestions.jsp</result>
+			<!-- 重定向到action执行getTWrittens,通过param标签传带参数 -->
+			<result name="redWlist" type="redirectAction">
+				<param name="namespace">/question</param>
+				<param name="actionName">question_getTWrittens</param>
+				<param name="course.csId">${course.csId }</param>
+				<param name="course.csName">${course.csName }</param>
+				<param name="up">${up}</param>
+			</result>
+			<!-- 重定向到action执行getTMachines,通过param标签传带参数 -->
+			<result name="redMlist" type="redirectAction">
+				<param name="namespace">/question</param>
+				<param name="actionName">question_getTMachines</param>
+				<param name="course.csId">${course.csId }</param>
+				<param name="course.csName">${course.csName }</param>
+				<param name="up">${up}</param>
+			</result>
+			<result name="goreviseQuestion">/jsp/papers/reviseQuestion.jsp</result>
+			<result name="redpaper_getQuestionById" type="redirectAction">
+				不要忘记约定!!!!!!!!!!!!!!!!!!!!!!!!!!
+				<param name="namespace">/paper</param>
+				<param name="actionName">paper_getQuestionById</param>
+				<param name="paper.pid">${paper.pid}</param>
+			</result>
+			<result name="toupdateWritten">/jsp/questions/updateWritten.jsp</result>
+			<allowed-methods>getQuestionByInfo,getTWrittens,getTMachines,delTWrittens,delTMachines,addTWrittens,addTMachines,importfile,getTWBycsId,reviseQuestion,getWrittenById,updateWritten</allowed-methods>
+		</action>
+	</package>
+</struts>

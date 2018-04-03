@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="scores" namespace="/scores" extends="default">
+		<action name="scores_*" class="com.qhit.lh.gr3.cyh.exam.examScores.action.scoresAction" method="{1}">
+		<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+		<result name="goscoresList">/jsp/scoresManage/scoresList.jsp</result>
+		<result name="goExamScore">/jsp/scoresManage/examScore.jsp</result>
+		<result name="gopaperInfoList">/jsp/scoresManage/paperInfoList.jsp</result>
+		<result name="gopaper_Class">/jsp/scoresManage/paper_Class.jsp</result>
+		<result name="gopaperscoresList" type="redirectAction">
+		<param name="nameSpace">/scores</param>
+		<param name="actionName">scores_getPapersByInfo</param>
+		<param name="up">${up}</param>
+		</result>
+		<allowed-methods>getScoresList,getExamScore,getData,getPapersByInfo,getClassByPid,getExamScoreTwo,stopExam</allowed-methods>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-22 18:32:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.qhit.lh.gr3.cyh.exam.question.bean.TMachineTest" table="t_machineTest" schema="dbo" catalog="db_exam">
+        <id name="qid" type="int">
+            <column name="qId" />
+            <generator class="native" />
+        </id>
+        <property name="qtitle" type="string">
+            <column name="qTitle" length="100" not-null="true" />
+        </property>
+        <property name="degree" type="string">
+            <column name="degree" length="4" not-null="true" />
+        </property>
+        <property name="csId" type="int" insert="false" update="false">
+            <column name="csId" not-null="true" />
+        </property>
+        <property name="chapter" type="string">
+            <column name="chapter" length="2" />
+        </property>
+	<!-- n-1 -->
+        <many-to-one name="course" class="com.qhit.lh.gr3.cyh.exam.question.bean.TCourse" cascade="save-update" lazy="false" column="csId"/>
+	<!-- n-n -->
+	<set name="papers" table="paper_writtenTest" lazy="false" cascade="save-update">
+	<key column="qid"/>
+	<many-to-many class="com.qhit.lh.gr3.cyh.exam.paper.bean.TPaper" column="pid" />
+	</set>
+    </class>
+</hibernate-mapping>

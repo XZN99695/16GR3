@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>Ak-exam</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.jdt.core.javabuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.common.project.facet.core.builder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+		<buildCommand>
+			<name>org.eclipse.wst.validation.validationbuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
+		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
+		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
+		<nature>org.eclipse.jdt.core.javanature</nature>
+		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>WebContent/file/试题模板.xls</name>
+			<type>1</type>
+			<location>C:/Users/辉少/Desktop/学习有关文档/第二阶段项目/文档/试题模板.xls</location>
+		</link>
+	</linkedResources>
+</projectDescription>

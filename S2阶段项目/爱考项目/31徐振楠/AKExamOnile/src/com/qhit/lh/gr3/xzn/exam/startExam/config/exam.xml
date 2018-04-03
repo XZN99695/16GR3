@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="exam" namespace="/exam" extends="default">
+		<action name="exam_*" class="com.qhit.lh.gr3.cyh.exam.startExam.action.startExamAction" method="{1}">
+		<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+		<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="goexamlist">/jsp/exams/examlist.jsp</result>
+			<result name="goexamQuestion">/jsp/exams/examQuestion.jsp</result>
+			<result name="goJsonExam" type="json">
+			<param name="noCache">true</param>
+			<param name="contentType">application/json</param>
+			<param name="root">writtenTests</param>
+			</result>
+			<result name="goExamPaperList" type="redirectAction">
+			<param name="namespace">/exam</param>
+			<param name="actionName">exam_getPapersByInfo</param>
+			<param name="up">1</param>
+			</result>
+			<result type="json"></result>
+			<allowed-methods>getPapersByInfo,getExamInfo,getQuestionById,examEnd,questionSaveSession</allowed-methods>
+		</action>
+	</package>
+</struts>

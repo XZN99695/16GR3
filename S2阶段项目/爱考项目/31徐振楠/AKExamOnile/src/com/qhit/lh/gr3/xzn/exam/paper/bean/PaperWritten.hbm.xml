@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-22 18:38:58 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping default-access="field">
+ <class catalog="db_exam"
+  name="com.qhit.lh.gr3.cyh.exam.paper.bean.PaperWritten" schema="dbo" table="paper_writtenTest">
+  <id name="pwid" type="int">
+   <column name="pwid"/>
+   <generator class="native"/>
+  </id>
+  <property generated="never" lazy="false" name="pid" type="int">
+   <column name="pid" not-null="true"/>
+  </property>
+  <property generated="never" lazy="false" name="qid" type="int">
+   <column name="qid" not-null="true"/>
+  </property>
+  <many-to-one name="paper" class="com.qhit.lh.gr3.cyh.exam.paper.bean.TPaper" column="pid" insert="false" update="false"  lazy="false"/>
+  <many-to-one name="writtenTest" class="com.qhit.lh.gr3.cyh.exam.question.bean.TWrittenTest" column="qid" insert="false" update="false" lazy="false"/>
+ </class>
+</hibernate-mapping>

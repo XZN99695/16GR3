@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="paper" namespace="/paper" extends="default">
+		<action name="paper_*"
+			class="com.qhit.lh.gr3.cyh.exam.paper.action.PaperAction" method="{1}">
+			<interceptor-ref name="LoginInterceptor"></interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="gopaper">/jsp/papers/paperlist.jsp</result>
+			<result name="gopaperInfo">/jsp/papers/paperInfo.jsp</result>
+			<!-- 结果类型为json数据 设置Type="json" -->
+			<result name="goJsonpaper" type="json">
+				<!-- 设置要返回的参数 includeProperties:输出结果中需要包含的值 -->
+				<!-- <param name="includeProperties">courses.*</param> -->
+				<!-- 取消浏览器缓存 -->
+				<param name="noCache">true</param>
+				<!-- 设置服务器响应类型 -->
+				<param name="contentType">application/json</param>
+				<!--只序列化Action内的list属性 -->
+				<param name="root">objects</param>
+			</result>
+
+			<!-- 根据科目算出各种题目类型的个数 -->
+			<result name="goJsonRandom" type="json">
+				<!--取消浏览器缓存 -->
+				<param name="noCache">true</param>
+				<!-- 设置服务器响应格式 -->
+				<param name="contentType">application/json</param>
+				<!-- 设置要返回的参数includeProperties:输出结果中需要包含的值 -->
+				<param name="includeProperties">
+					maxdan1,maxdan2,maxdan3,maxduo1,maxduo2,maxduo3
+				</param>
+			</result>
+			<result name="redPlist" type="redirectAction">
+				<param name="namespace">/paper</param>
+				<param name="actionName">paper_getPaperByInfo</param>
+				<param name="up">${up}</param>
+			</result>
+			<result name="goselectPapaer">/jsp/papers/selectPaper.jsp</result>
+			<allowed-methods>getPaperByInfo,getCourseByInfo,getQuestionByCsId,createByRandom,getQuestionById,delPaperById,getTWBycsId,createBySelect,createExam,stopExam</allowed-methods>
+		</action>
+	</package>
+</struts>

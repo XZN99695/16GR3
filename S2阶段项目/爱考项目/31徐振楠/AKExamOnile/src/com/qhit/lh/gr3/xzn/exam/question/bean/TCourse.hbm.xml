@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2018-1-22 18:32:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.qhit.lh.gr3.cyh.exam.question.bean.TCourse" table="t_course" schema="dbo" catalog="db_exam">
+        <id name="csId" type="int">
+            <column name="csId" />
+            <generator class="native" />
+        </id>
+        <property name="csName" type="string">
+            <column name="csName" length="20" not-null="true" />
+        </property>
+        <property name="stage" type="string">
+            <column name="stage" length="2" not-null="true" />
+        </property>
+        <property name="major" type="string">
+            <column name="major" length="10" not-null="true" />
+        </property>
+	<!-- 1-n --> 
+	<set name="machineTests" lazy="false" cascade="all">
+	<key column="csId"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.question.bean.TMachineTest"/>
+	</set>
+	<!-- 1-n -->
+	<set name="writtenTests" lazy="false" cascade="all">
+	<key column="csId"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.question.bean.TWrittenTest"/>
+	</set>
+	<!-- 1-n -->
+	<set name="papers" lazy="false" cascade="save-update">
+	<key column="csId"/>
+	<one-to-many class="com.qhit.lh.gr3.cyh.exam.paper.bean.TPaper"/>
+	</set>
+    </class>
+</hibernate-mapping>
